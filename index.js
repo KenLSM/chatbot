@@ -53,43 +53,44 @@ app.post('/webhook/', function (req, res) {
 function sendCard1(sender) {
  messageData = {
         "attachment": {
-        "type": "template",
-        "payload": {
-            "template_type": "list",
-            "elements": [
-                {
-                    "title": "Learn",
-                    "subtitle": "Learn more about our 4-step technique to prevent scams!",
-                    "image_url": "https://image.flaticon.com/icons/svg/43/43254.svg",
-                    "buttons": [{
-                        "title": "Click",
-                        "type": "postback",
-                        "webview_height_ratio": "tall",
-                        "payload": "Learn",
-                    }]
-                }, {
-                    "title": "Evaluate",
-                    "subtitle": "Have a scenario that you think you are in?",
-                    "image_url": "https://image.flaticon.com/icons/svg/43/43732.svg",
-                    "buttons": [{
-                        "title": "Click",
-                        "type": "postback",
-                        "webview_height_ratio": "tall",
-                        "payload": "Evalute",
-                    }]
-                }, {
-                    "title": "Ask",
-                    "subtitle": "Have a question that you want to search?",
-                    "image_url": "https://image.flaticon.com/icons/svg/57/57253.svg",
-                    "buttons": [{
-                        "title": "Click",
-                        "type": "postback",
-                        "webview_height_ratio": "tall",
-                        "payload": "Ask",
-                    }]
-                }
-            ],
-            "buttons": []
+            "type": "template",
+            "payload": {
+                "template_type": "list",
+                "elements": [
+                    {
+                        "title": "Learn",
+                        "subtitle": "Learn more about our 4-step technique to prevent scams!",
+                        "image_url": "https://image.flaticon.com/icons/svg/43/43254.svg",
+                        "buttons": [{
+                            "title": "Click",
+                            "type": "postback",
+                            "webview_height_ratio": "tall",
+                            "payload": "Learn",
+                        }]
+                    }, {
+                        "title": "Evaluate",
+                        "subtitle": "Have a scenario that you think you are in?",
+                        "image_url": "https://image.flaticon.com/icons/svg/43/43732.svg",
+                        "buttons": [{
+                            "title": "Click",
+                            "type": "postback",
+                            "webview_height_ratio": "tall",
+                            "payload": "Evalute",
+                        }]
+                    }, {
+                        "title": "Ask",
+                        "subtitle": "Have a question that you want to search?",
+                        "image_url": "https://image.flaticon.com/icons/svg/57/57253.svg",
+                        "buttons": [{
+                            "title": "Click",
+                            "type": "postback",
+                            "webview_height_ratio": "tall",
+                            "payload": "Ask",
+                        }]
+                    }
+                ],
+                "buttons": []
+            }
         }
     };
     request({
