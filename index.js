@@ -40,11 +40,72 @@ app.post('/webhook/', function (req, res) {
                 sendGenericMessage(sender);
                 continue;
             }
-            sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200));
+            // sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200));
+            sendTextMessage(sender, "Hi Ken!");
+            sendTextMessage(sender, "What would you like to do today?");
         }
     }
     res.sendStatus(200);
 });
+
+function sendCard1(sender) {
+ messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "list",
+                "elements": [
+                    {
+                        "title": "Learn",
+                        "subtitle": "Learn more about our 4-step technique to prevent scams!",
+                        "image_url": "https://image.flaticon.com/icons/svg/43/43254.svg",
+                        "buttons": [{
+                            "type": "postback",
+                            "messenger_extensions": true,
+                            "webview_height_ratio": "tall",
+                            "payload": "Learn",
+                        }],
+                    }, {
+                        "title": "Evaluate",
+                        "subtitle": "Have a scenario that you think you are in?",
+                        "image_url": "https://image.flaticon.com/icons/svg/43/43732.svg",
+                        "buttons": [{
+                            "type": "postback",
+                            "messenger_extensions": true,
+                            "webview_height_ratio": "tall",
+                            "payload": "Evalute",
+                        }],
+                    }, {
+                        "title": "Ask",
+                        "subtitle": "Have a question that you want to search?",
+                        "image_url": "https://image.flaticon.com/icons/svg/57/57253.svg",
+                        "buttons": [{
+                            "type": "postback",
+                            "messenger_extensions": true,
+                            "webview_height_ratio": "tall",
+                            "payload": "Ask",
+                        }],
+                    }
+                ]
+            }
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })   
+};
 
 function sendGenericMessage(sender) {
     messageData = {
