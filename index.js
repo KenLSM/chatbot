@@ -43,6 +43,7 @@ app.post('/webhook/', function (req, res) {
             // sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200));
             sendTextMessage(sender, "Hi Ken!");
             sendTextMessage(sender, "What would you like to do today?");
+            sendCard1(sender);
         }
     }
     res.sendStatus(200);
