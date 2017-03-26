@@ -43,6 +43,7 @@ app.post('/webhook/', function (req, res) {
             // sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200));
             sendTextMessage(sender, "Hi Ken!");
             sendTextMessage(sender, "What would you like to do today?");
+            sendTextMessage(sender, "" + sender);
             sendCard1(sender);
         }
     }
@@ -65,7 +66,7 @@ function sendCard1(sender) {
                             "messenger_extensions": true,
                             "webview_height_ratio": "tall",
                             "payload": "Learn",
-                        }],
+                        }]
                     }, {
                         "title": "Evaluate",
                         "subtitle": "Have a scenario that you think you are in?",
@@ -75,7 +76,7 @@ function sendCard1(sender) {
                             "messenger_extensions": true,
                             "webview_height_ratio": "tall",
                             "payload": "Evalute",
-                        }],
+                        }]
                     }, {
                         "title": "Ask",
                         "subtitle": "Have a question that you want to search?",
@@ -85,12 +86,12 @@ function sendCard1(sender) {
                             "messenger_extensions": true,
                             "webview_height_ratio": "tall",
                             "payload": "Ask",
-                        }],
+                        }]
                     }
                 ]
             }
         }
-    }
+    };
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token:token},
